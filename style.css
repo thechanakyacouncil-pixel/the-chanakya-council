@@ -1,0 +1,1269 @@
+:root {
+
+    --navy: #071421;
+    --navy2: #0c2034;
+
+    --gold: #c9a45c;
+    --gold2: #e0c47d;
+
+    --cream: #f4efe4;
+
+    --text: #eef1f4;
+    --muted: #a9b3bf;
+
+    --border: rgba(201,164,92,.25);
+
+}
+
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    background: var(--navy);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    line-height: 1.7;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+button {
+
+    font-family: inherit;
+
+}
+
+
+::selection {
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+}
+
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 82px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background: rgba(7,20,33,.88);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand-om {
+
+    color: var(--gold);
+
+    font-size: 32px;
+
+}
+
+
+.brand-text strong {
+
+    display: block;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.brand-text small {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+
+nav a {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+
+}
+
+
+nav a:hover {
+
+    color: var(--gold);
+
+}
+
+
+.menu-button {
+
+    display: none;
+
+    background: none;
+
+    border: 0;
+
+    color: var(--gold);
+
+    font-size: 25px;
+
+}
+
+
+
+/* ================= HERO ================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 120px 7% 80px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(201,164,92,.14),
+            transparent 42%
+        );
+
+}
+
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border: 1px solid rgba(201,164,92,.1);
+
+    transform: rotate(45deg);
+
+}
+
+
+.hero-glow {
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(201,164,92,.08);
+
+    filter: blur(80px);
+
+}
+
+
+.hero-symbol {
+
+    position: relative;
+
+    color: var(--gold);
+
+    font-size: 75px;
+
+    margin-bottom: 10px;
+
+    animation: floating 4s ease-in-out infinite;
+
+}
+
+
+.eyebrow {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero h1 {
+
+    position: relative;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(65px,10vw,145px);
+
+    line-height: .78;
+
+    letter-spacing: -3px;
+
+}
+
+
+.hero h1 span {
+
+    color: var(--gold);
+
+}
+
+
+.hero-description {
+
+    max-width: 600px;
+
+    margin: 35px auto;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.button {
+
+    display: inline-block;
+
+    padding: 14px 27px;
+
+    border: 1px solid var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    transition: .3s;
+
+}
+
+
+.button-primary {
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+}
+
+
+.button-primary:hover {
+
+    background: var(--gold2);
+
+    transform: translateY(-3px);
+
+}
+
+
+.button-outline {
+
+    color: var(--gold);
+
+}
+
+
+.button-outline:hover {
+
+    background: rgba(201,164,92,.1);
+
+    transform: translateY(-3px);
+
+}
+
+
+.scroll-indicator {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.scroll-indicator b {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 17px;
+
+}
+
+
+
+/* ================= GENERAL ================= */
+
+.section {
+
+    padding: 120px 8%;
+
+}
+
+
+.section-heading {
+
+    max-width: 800px;
+
+    margin-bottom: 65px;
+
+}
+
+
+.section-heading h2,
+.center-heading h2 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(45px,6vw,80px);
+
+    line-height: .95;
+
+}
+
+
+.section-heading h2 span,
+.center-heading h2 span {
+
+    display: block;
+
+    color: var(--gold);
+
+}
+
+
+.center-heading {
+
+    max-width: 850px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+
+}
+
+
+.center-heading > p:last-child {
+
+    max-width: 600px;
+
+    margin: 25px auto 0;
+
+    color: var(--muted);
+
+}
+
+
+
+/* ================= ABOUT ================= */
+
+.about {
+
+    background: var(--cream);
+
+    color: var(--navy);
+
+}
+
+
+.about .eyebrow {
+
+    color: #957331;
+
+}
+
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+.about-content {
+
+    max-width: 700px;
+
+}
+
+
+.about-content p {
+
+    color: #405060;
+
+    margin-bottom: 25px;
+
+}
+
+
+.philosophy-card {
+
+    text-align: center;
+
+    padding: 55px;
+
+    border: 1px solid rgba(7,20,33,.18);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201,164,92,.14),
+            transparent
+        );
+
+}
+
+
+.large-om {
+
+    color: #957331;
+
+    font-size: 75px;
+
+}
+
+
+.philosophy-card h3 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 37px;
+
+}
+
+
+.philosophy-card p {
+
+    color: #536070;
+
+}
+
+
+
+/* ================= MUN ================= */
+
+.mun {
+
+    background: var(--navy2);
+
+}
+
+
+.conference-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 50px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(201,164,92,.08),
+            transparent
+        );
+
+}
+
+
+.mini-label {
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.conference-card h3 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(35px,5vw,65px);
+
+    margin: 5px 0;
+
+}
+
+
+.conference-card p {
+
+    color: var(--muted);
+
+}
+
+
+
+/* ================= COMMITTEES ================= */
+
+.committee-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+
+.committee-card {
+
+    position: relative;
+
+    min-height: 310px;
+
+    padding: 45px;
+
+    border: 1px solid var(--border);
+
+    overflow: hidden;
+
+    transition: .4s;
+
+}
+
+
+.committee-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--gold);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201,164,92,.08),
+            transparent
+        );
+
+}
+
+
+.committee-card .number {
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.committee-card h3 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 50px;
+
+    margin: 35px 0 10px;
+
+}
+
+
+.committee-card p {
+
+    color: var(--muted);
+
+    max-width: 500px;
+
+}
+
+
+.committee-card small {
+
+    position: absolute;
+
+    left: 45px;
+
+    bottom: 25px;
+
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.committee-card.special {
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(201,164,92,.13),
+            transparent 45%
+        );
+
+}
+
+
+
+/* ================= VALUES ================= */
+
+.values {
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    border-top: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.value {
+
+    padding: 55px 35px;
+
+    border-right: 1px solid var(--border);
+
+}
+
+
+.value:last-child {
+
+    border-right: 0;
+
+}
+
+
+.value span {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+}
+
+
+.value h3 {
+
+    margin: 22px 0 5px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.value p {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+
+/* ================= LEADERSHIP ================= */
+
+.leadership {
+
+    background: var(--navy2);
+
+}
+
+
+.leaders {
+
+    max-width: 950px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 25px;
+
+}
+
+
+.leader {
+
+    padding: 55px 40px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+
+    transition: .4s;
+
+}
+
+
+.leader:hover {
+
+    transform: translateY(-7px);
+
+    border-color: var(--gold);
+
+}
+
+
+.leader-symbol {
+
+    color: var(--gold);
+
+    font-size: 58px;
+
+}
+
+
+.role {
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-top: 20px;
+
+}
+
+
+.leader h3 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 43px;
+
+    margin: 8px 0 15px;
+
+}
+
+
+.leader > p:last-child {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+
+/* ================= CTA ================= */
+
+.cta {
+
+    text-align: center;
+
+    padding: 140px 7%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201,164,92,.12),
+            transparent 45%
+        );
+
+}
+
+
+.cta-symbol {
+
+    color: var(--gold);
+
+    font-size: 70px;
+
+}
+
+
+.cta h2 {
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(50px,7vw,90px);
+
+    line-height: .9;
+
+}
+
+
+.cta h2 span {
+
+    color: var(--gold);
+
+    display: block;
+
+}
+
+
+.cta > p:not(.eyebrow) {
+
+    color: var(--muted);
+
+    margin: 25px 0 30px;
+
+}
+
+
+
+/* ================= CONTACT ================= */
+
+.contact {
+
+    background: var(--cream);
+
+    color: var(--navy);
+
+}
+
+
+.contact .eyebrow {
+
+    color: #957331;
+
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 30px;
+
+}
+
+
+.contact-grid > div {
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(7,20,33,.2);
+
+}
+
+
+.contact-grid small {
+
+    display: block;
+
+    color: #957331;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.contact-grid strong {
+
+    display: block;
+
+    font-size: 16px;
+
+}
+
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 55px 8%;
+
+    background: #040b13;
+
+}
+
+
+.footer-logo {
+
+    color: var(--gold);
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 23px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.footer-logo span {
+
+    font-size: 30px;
+
+    margin-right: 10px;
+
+}
+
+
+footer p,
+footer small {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+}
+
+
+footer p {
+
+    margin-top: 10px;
+
+}
+
+
+.footer-line {
+
+    width: min(500px,80%);
+
+    height: 1px;
+
+    margin: 30px auto;
+
+    background: var(--border);
+
+}
+
+
+
+/* ================= ANIMATION ================= */
+
+@keyframes floating {
+
+    0%,100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+}
+
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px) {
+
+
+    .navbar {
+
+        height: 70px;
+
+    }
+
+
+    nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        background: var(--navy);
+
+        border-bottom: 1px solid var(--border);
+
+    }
+
+
+    nav.active {
+
+        display: flex;
+
+    }
+
+
+    .menu-button {
+
+        display: block;
+
+    }
+
+
+    .brand-text strong {
+
+        font-size: 16px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: clamp(58px,16vw,95px);
+
+    }
+
+
+    .about-grid,
+    .committee-grid,
+    .leaders,
+    .contact-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .conference-card {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 30px;
+
+    }
+
+
+    .values {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .value:nth-child(2) {
+
+        border-right: 0;
+
+    }
+
+
+    .value {
+
+        border-bottom: 1px solid var(--border);
+
+    }
+
+
+    .section {
+
+        padding: 85px 7%;
+
+    }
+
+
+}
+
+
+@media(max-width:500px) {
+
+
+    .values {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .value {
+
+        border-right: 0;
+
+    }
+
+
+    .hero-buttons {
+
+        width: 100%;
+
+        flex-direction: column;
+
+    }
+
+
+    .button {
+
+        width: 100%;
+
+    }
+
+
+    .committee-card {
+
+        padding: 30px;
+
+        min-height: 270px;
+
+    }
+
+
+    .committee-card small {
+
+        left: 30px;
+
+    }
+
+
+  }
