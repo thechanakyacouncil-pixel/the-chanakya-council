@@ -1,20 +1,48 @@
+/* =========================================================
+   THE CHANAKYA COUNCIL
+   Visual system:
+   Deep Forest + Cyan + Emerald + Cream + Gold
+   ========================================================= */
+
+
+/* ================= ROOT ================= */
+
 :root {
 
-    --navy: #071421;
-    --navy2: #0c2034;
+    --forest: #071b1a;
+    --forest-2: #0b2926;
+    --forest-3: #103b35;
 
-    --gold: #c9a45c;
-    --gold2: #e0c47d;
+    --cream: #f5efdf;
+    --cream-2: #ebe2ca;
 
-    --cream: #f4efe4;
+    --cyan: #65e6e0;
+    --cyan-dark: #2bb9b5;
 
-    --text: #eef1f4;
-    --muted: #a9b3bf;
+    --green: #72d49b;
+    --green-dark: #2d8d68;
 
-    --border: rgba(201,164,92,.25);
+    --gold: #d5b66a;
+    --gold-light: #ecd894;
+
+    --white: #f9faf5;
+
+    --text: #edf3ed;
+    --muted: #a9bdb6;
+
+    --dark-text: #122a27;
+
+    --border: rgba(101, 230, 224, .20);
+
+    --serif: "Cormorant Garamond", serif;
+    --display: "Playfair Display", serif;
+    --sans: "DM Sans", sans-serif;
+    --script: "Allura", cursive;
 
 }
 
+
+/* ================= RESET ================= */
 
 * {
 
@@ -35,13 +63,15 @@ html {
 
 body {
 
-    background: var(--navy);
+    background: var(--forest);
 
     color: var(--text);
 
-    font-family: "Inter", sans-serif;
+    font-family: var(--sans);
 
     line-height: 1.7;
+
+    overflow-x: hidden;
 
 }
 
@@ -64,12 +94,31 @@ button {
 
 ::selection {
 
-    background: var(--gold);
+    background: var(--cyan);
 
-    color: var(--navy);
+    color: var(--forest);
 
 }
 
+
+/* ================= GRAIN ================= */
+
+.page-noise {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: .055;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
+}
 
 
 /* ================= NAVBAR ================= */
@@ -95,11 +144,17 @@ button {
 
     z-index: 1000;
 
-    background: rgba(7,20,33,.88);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,27,26,.95),
+            rgba(7,27,26,.78)
+        );
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid rgba(101,230,224,.14);
 
 }
 
@@ -117,9 +172,16 @@ button {
 
 .brand-om {
 
-    color: var(--gold);
+    color: var(--cyan);
 
-    font-size: 32px;
+    font-family: var(--serif);
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 25px rgba(101,230,224,.35);
 
 }
 
@@ -128,7 +190,7 @@ button {
 
     display: block;
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
     font-size: 20px;
 
@@ -154,27 +216,33 @@ nav {
 
     display: flex;
 
-    gap: 30px;
+    align-items: center;
+
+    gap: 29px;
 
 }
 
 
 nav a {
 
-    color: var(--muted);
+    color: #b7c7c1;
 
     font-size: 11px;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 
-    transition: .3s;
+    text-transform: uppercase;
+
+    transition: .3s ease;
 
 }
 
 
 nav a:hover {
 
-    color: var(--gold);
+    color: var(--cyan);
+
+    transform: translateY(-1px);
 
 }
 
@@ -187,12 +255,11 @@ nav a:hover {
 
     border: 0;
 
-    color: var(--gold);
+    color: var(--cyan);
 
     font-size: 25px;
 
 }
-
 
 
 /* ================= HERO ================= */
@@ -201,9 +268,11 @@ nav a:hover {
 
     min-height: 100vh;
 
-    display: flex;
+    position: relative;
 
-    flex-direction: column;
+    overflow: hidden;
+
+    display: flex;
 
     align-items: center;
 
@@ -211,66 +280,189 @@ nav a:hover {
 
     text-align: center;
 
-    padding: 120px 7% 80px;
-
-    position: relative;
-
-    overflow: hidden;
+    padding:
+        130px 7% 90px;
 
     background:
 
         radial-gradient(
-            circle at center,
-            rgba(201,164,92,.14),
-            transparent 42%
+            circle at 20% 25%,
+            rgba(101,230,224,.13),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(114,212,155,.13),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            #061716,
+            #09221f 48%,
+            #071b1a
         );
 
 }
 
 
-.hero::before {
+.hero-content {
 
-    content: "";
+    position: relative;
 
-    position: absolute;
+    z-index: 5;
 
-    width: 600px;
-    height: 600px;
-
-    border: 1px solid rgba(201,164,92,.1);
-
-    transform: rotate(45deg);
+    max-width: 1000px;
 
 }
 
 
-.hero-glow {
+.hero-orb {
 
     position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(3px);
+
+    pointer-events: none;
+
+}
+
+
+.orb-one {
+
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    top: 80px;
+
+    border:
+        1px solid rgba(101,230,224,.18);
+
+    box-shadow:
+        0 0 100px rgba(101,230,224,.10);
+
+}
+
+
+.orb-two {
 
     width: 300px;
     height: 300px;
 
+    left: -150px;
+    bottom: 60px;
+
+    border:
+        1px solid rgba(114,212,155,.20);
+
+    box-shadow:
+        0 0 100px rgba(114,212,155,.09);
+
+}
+
+
+.hero-ring {
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
     border-radius: 50%;
 
-    background: rgba(201,164,92,.08);
+    border:
+        1px dashed rgba(213,182,106,.14);
 
-    filter: blur(80px);
+    animation:
+        rotateRing 30s linear infinite;
+
+}
+
+
+.ring-one {
+
+    transform: rotate(20deg);
+
+}
+
+
+.ring-two {
+
+    width: 700px;
+    height: 700px;
+
+    border-style: solid;
+
+    border-color:
+        rgba(101,230,224,.055);
+
+    animation-direction: reverse;
+
+    animation-duration: 45s;
+
+}
+
+
+@keyframes rotateRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 
 }
 
 
 .hero-symbol {
 
-    position: relative;
+    color: var(--cyan);
 
-    color: var(--gold);
+    font-family: var(--serif);
 
-    font-size: 75px;
+    font-size: 74px;
 
-    margin-bottom: 10px;
+    line-height: 1;
 
-    animation: floating 4s ease-in-out infinite;
+    margin-bottom: 2px;
+
+    animation:
+        floatSymbol 4s ease-in-out infinite;
+
+    text-shadow:
+        0 0 35px rgba(101,230,224,.28);
+
+}
+
+
+@keyframes floatSymbol {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+
+.script-kicker {
+
+    font-family: var(--script);
+
+    color: var(--green);
+
+    font-size: 35px;
+
+    margin-bottom: 7px;
 
 }
 
@@ -287,43 +479,62 @@ nav a:hover {
 
     margin-bottom: 20px;
 
+    text-transform: uppercase;
+
 }
 
 
 .hero h1 {
 
-    position: relative;
+    font-family: var(--serif);
 
-    font-family: "Cormorant Garamond",serif;
-
-    font-size: clamp(65px,10vw,145px);
+    font-size:
+        clamp(66px, 10vw, 145px);
 
     line-height: .78;
 
-    letter-spacing: -3px;
+    letter-spacing: -4px;
+
+    font-weight: 600;
 
 }
 
 
 .hero h1 span {
 
-    color: var(--gold);
+    display: block;
+
+    color: var(--cyan);
+
+    text-shadow:
+        0 0 35px rgba(101,230,224,.13);
 
 }
 
 
 .hero-description {
 
-    max-width: 600px;
+    max-width: 650px;
 
-    margin: 35px auto;
+    margin: 38px auto;
 
     color: var(--muted);
 
-    font-size: 17px;
+    font-size: 16px;
 
 }
 
+
+.hero-description em {
+
+    color: var(--cream);
+
+    font-family: var(--display);
+
+}
+
+
+/* ================= BUTTONS ================= */
 
 .hero-buttons {
 
@@ -331,7 +542,7 @@ nav a:hover {
 
     justify-content: center;
 
-    gap: 15px;
+    gap: 14px;
 
     flex-wrap: wrap;
 
@@ -344,49 +555,118 @@ nav a:hover {
 
     padding: 14px 27px;
 
-    border: 1px solid var(--gold);
+    border: 1px solid var(--cyan);
 
     font-size: 10px;
 
     font-weight: 700;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 1.7px;
 
-    transition: .3s;
+    text-transform: uppercase;
+
+    transition: .35s ease;
 
 }
 
 
 .button-primary {
 
-    background: var(--gold);
+    background: var(--cyan);
 
-    color: var(--navy);
+    color: var(--forest);
+
+    box-shadow:
+        0 8px 30px rgba(101,230,224,.12);
 
 }
 
 
 .button-primary:hover {
 
-    background: var(--gold2);
+    background: var(--cream);
 
-    transform: translateY(-3px);
+    border-color: var(--cream);
+
+    transform: translateY(-4px);
 
 }
 
 
 .button-outline {
 
-    color: var(--gold);
+    color: var(--cyan);
+
+    background: rgba(101,230,224,.025);
 
 }
 
 
 .button-outline:hover {
 
-    background: rgba(201,164,92,.1);
+    background: rgba(101,230,224,.09);
 
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+
+}
+
+
+/* ================= HERO DETAILS ================= */
+
+.hero-details {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 27px;
+
+    margin-top: 55px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid rgba(101,230,224,.14);
+
+}
+
+
+.hero-detail span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 2px;
+
+}
+
+
+.hero-detail strong {
+
+    color: var(--cream);
+
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+}
+
+
+.detail-divider {
+
+    width: 1px;
+
+    height: 30px;
+
+    background:
+        rgba(101,230,224,.25);
 
 }
 
@@ -395,9 +675,9 @@ nav a:hover {
 
     position: absolute;
 
-    bottom: 25px;
+    bottom: 24px;
 
-    color: var(--muted);
+    color: #79928c;
 
     font-size: 8px;
 
@@ -410,26 +690,25 @@ nav a:hover {
 
     display: block;
 
-    color: var(--gold);
+    color: var(--cyan);
 
-    font-size: 17px;
+    font-size: 18px;
 
 }
-
 
 
 /* ================= GENERAL ================= */
 
 .section {
 
-    padding: 120px 8%;
+    padding: 125px 8%;
 
 }
 
 
 .section-heading {
 
-    max-width: 800px;
+    max-width: 850px;
 
     margin-bottom: 65px;
 
@@ -439,11 +718,14 @@ nav a:hover {
 .section-heading h2,
 .center-heading h2 {
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
-    font-size: clamp(45px,6vw,80px);
+    font-size:
+        clamp(48px, 6vw, 82px);
 
-    line-height: .95;
+    line-height: .93;
+
+    font-weight: 600;
 
 }
 
@@ -453,14 +735,23 @@ nav a:hover {
 
     display: block;
 
-    color: var(--gold);
+}
+
+
+.script-accent {
+
+    font-family: var(--script);
+
+    font-size: 36px;
+
+    margin-top: 17px;
 
 }
 
 
 .center-heading {
 
-    max-width: 850px;
+    max-width: 900px;
 
     margin: 0 auto 65px;
 
@@ -471,7 +762,7 @@ nav a:hover {
 
 .center-heading > p:last-child {
 
-    max-width: 600px;
+    max-width: 620px;
 
     margin: 25px auto 0;
 
@@ -480,21 +771,42 @@ nav a:hover {
 }
 
 
-
 /* ================= ABOUT ================= */
 
 .about {
 
-    background: var(--cream);
+    background:
 
-    color: var(--navy);
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(101,230,224,.12),
+            transparent 22%
+        ),
+
+        var(--cream);
+
+    color: var(--dark-text);
 
 }
 
 
 .about .eyebrow {
 
-    color: #957331;
+    color: var(--green-dark);
+
+}
+
+
+.about .section-heading h2 span {
+
+    color: var(--green-dark);
+
+}
+
+
+.about .script-accent {
+
+    color: #358f78;
 
 }
 
@@ -503,9 +815,10 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns:
+        1.45fr .9fr;
 
-    gap: 80px;
+    gap: 90px;
 
     align-items: center;
 
@@ -514,74 +827,156 @@ nav a:hover {
 
 .about-content {
 
-    max-width: 700px;
+    max-width: 720px;
 
 }
 
 
 .about-content p {
 
-    color: #405060;
+    color: #435b56;
 
     margin-bottom: 25px;
+
+    font-size: 16px;
 
 }
 
 
 .philosophy-card {
 
+    position: relative;
+
+    overflow: hidden;
+
     text-align: center;
 
-    padding: 55px;
+    padding: 65px 45px;
 
-    border: 1px solid rgba(7,20,33,.18);
+    min-height: 390px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    border:
+        1px solid rgba(7,27,26,.16);
 
     background:
+
         linear-gradient(
             135deg,
-            rgba(201,164,92,.14),
+            rgba(101,230,224,.15),
+            rgba(114,212,155,.10),
             transparent
         );
 
 }
 
 
+.card-glow {
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(101,230,224,.16);
+
+    filter: blur(60px);
+
+    top: -80px;
+    right: -50px;
+
+}
+
+
 .large-om {
 
-    color: #957331;
+    position: relative;
 
-    font-size: 75px;
+    color: var(--green-dark);
+
+    font-size: 70px;
+
+}
+
+
+.script-card {
+
+    position: relative;
+
+    color: #529681;
+
+    font-family: var(--script);
+
+    font-size: 34px;
 
 }
 
 
 .philosophy-card h3 {
 
-    font-family: "Cormorant Garamond",serif;
+    position: relative;
 
-    font-size: 37px;
+    font-family: var(--serif);
 
-}
+    font-size: 42px;
 
-
-.philosophy-card p {
-
-    color: #536070;
+    margin: 7px 0;
 
 }
 
+
+.philosophy-lines {
+
+    position: relative;
+
+    color: #536965;
+
+}
 
 
 /* ================= MUN ================= */
 
 .mun {
 
-    background: var(--navy2);
+    background:
+
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(114,212,155,.09),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(101,230,224,.09),
+            transparent 25%
+        ),
+
+        var(--forest-2);
+
+}
+
+
+.mun .center-heading h2 span {
+
+    color: var(--cyan);
 
 }
 
 
 .conference-card {
+
+    position: relative;
+
+    overflow: hidden;
 
     display: flex;
 
@@ -589,25 +984,60 @@ nav a:hover {
 
     justify-content: space-between;
 
-    gap: 30px;
+    gap: 40px;
 
-    padding: 50px;
+    padding: 55px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid rgba(101,230,224,.23);
 
     background:
+
         linear-gradient(
             120deg,
-            rgba(201,164,92,.08),
-            transparent
+            rgba(101,230,224,.09),
+            rgba(114,212,155,.06),
+            rgba(213,182,106,.04)
         );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.16);
+
+}
+
+
+.conference-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -120px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(101,230,224,.18);
+
+}
+
+
+.conference-left {
+
+    position: relative;
+
+    z-index: 2;
 
 }
 
 
 .mini-label {
 
-    color: var(--gold);
+    color: var(--cyan);
 
     font-size: 9px;
 
@@ -618,109 +1048,150 @@ nav a:hover {
 
 .conference-card h3 {
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
-    font-size: clamp(35px,5vw,65px);
+    font-size:
+        clamp(38px, 5vw, 67px);
 
-    margin: 5px 0;
+    line-height: .95;
+
+    margin: 7px 0 14px;
 
 }
 
 
-.conference-card p {
+.conference-tagline {
+
+    max-width: 570px;
 
     color: var(--muted);
 
 }
 
 
+.script-small {
 
-/* ================= COMMITTEES ================= */
+    color: var(--green);
 
-.committee-grid {
+    font-family: var(--script);
 
-    display: grid;
+    font-size: 30px;
 
-    grid-template-columns: repeat(2,1fr);
-
-    gap: 20px;
-
-}
-
-
-.committee-card {
-
-    position: relative;
-
-    min-height: 310px;
-
-    padding: 45px;
-
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-
-    transition: .4s;
+    margin-top: 12px;
 
 }
 
 
-.committee-card:hover {
+.conference-action {
 
-    transform: translateY(-8px);
+    display: flex;
 
-    border-color: var(--gold);
+    flex-direction: column;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(201,164,92,.08),
-            transparent
-        );
+    align-items: flex-end;
+
+    gap: 25px;
 
 }
 
 
-.committee-card .number {
+.conference-date {
 
-    color: var(--gold);
+    display: flex;
 
-    font-size: 11px;
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.conference-date > span {
+
+    font-family: var(--serif);
+
+    font-size: 75px;
+
+    line-height: .7;
+
+    color: var(--cyan);
+
+}
+
+
+.conference-date strong {
+
+    display: block;
+
+    color: var(--cream);
+
+    font-size: 13px;
 
     letter-spacing: 2px;
 
 }
 
 
-.committee-card h3 {
-
-    font-family: "Cormorant Garamond",serif;
-
-    font-size: 50px;
-
-    margin: 35px 0 10px;
-
-}
-
-
-.committee-card p {
+.conference-date small {
 
     color: var(--muted);
 
-    max-width: 500px;
+    font-size: 9px;
+
+    letter-spacing: 1px;
 
 }
 
 
-.committee-card small {
+/* ================= CONFERENCE INFO ================= */
 
-    position: absolute;
+.conference-info-grid {
 
-    left: 45px;
+    display: grid;
 
-    bottom: 25px;
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    color: var(--gold);
+    gap: 14px;
+
+    margin-top: 18px;
+
+}
+
+
+.info-box {
+
+    min-height: 145px;
+
+    padding: 25px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(255,255,255,.025);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    transition: .35s ease;
+
+}
+
+
+.info-box:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,.05);
+
+}
+
+
+.info-box small {
+
+    color: var(--muted);
 
     font-size: 8px;
 
@@ -729,17 +1200,337 @@ nav a:hover {
 }
 
 
-.committee-card.special {
+.info-box strong {
 
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(201,164,92,.13),
-            transparent 45%
-        );
+    font-family: var(--serif);
+
+    font-size: 21px;
+
+    color: var(--cream);
 
 }
 
+
+.info-icon {
+
+    font-size: 21px;
+
+}
+
+
+.info-box.cyan {
+
+    border-top:
+        2px solid var(--cyan);
+
+}
+
+
+.info-box.green {
+
+    border-top:
+        2px solid var(--green);
+
+}
+
+
+.info-box.cream {
+
+    border-top:
+        2px solid var(--cream);
+
+}
+
+
+.info-box.gold {
+
+    border-top:
+        2px solid var(--gold);
+
+}
+
+
+.info-box.cyan .info-icon {
+
+    color: var(--cyan);
+
+}
+
+
+.info-box.green .info-icon {
+
+    color: var(--green);
+
+}
+
+
+.info-box.cream .info-icon {
+
+    color: var(--cream);
+
+}
+
+
+.info-box.gold .info-icon {
+
+    color: var(--gold);
+
+}
+
+
+/* ================= COMMITTEES ================= */
+
+.committees-section {
+
+    background:
+
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(101,230,224,.08),
+            transparent 25%
+        ),
+
+        var(--forest);
+
+}
+
+
+.committees-section .section-heading h2 span {
+
+    color: var(--cyan);
+
+}
+
+
+.committees-section .script-accent {
+
+    color: var(--green);
+
+}
+
+
+.committee-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.committee-card {
+
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 42px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        transform .4s ease,
+        border .4s ease,
+        background .4s ease;
+
+}
+
+
+.committee-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    right: -100px;
+    bottom: -100px;
+
+    opacity: .15;
+
+    filter: blur(30px);
+
+}
+
+
+.committee-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(101,230,224,.35);
+
+    background:
+        rgba(255,255,255,.045);
+
+}
+
+
+.cyan-card::after {
+
+    background: var(--cyan);
+
+}
+
+
+.green-card::after {
+
+    background: var(--green);
+
+}
+
+
+.cream-card::after {
+
+    background: var(--cream);
+
+}
+
+
+.special-card::after {
+
+    background: var(--gold);
+
+}
+
+
+.committee-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.committee-card .number {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+
+}
+
+
+.committee-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 15px rgba(101,230,224,.5);
+
+}
+
+
+.green-card .committee-dot {
+
+    background: var(--green);
+
+}
+
+
+.cream-card .committee-dot {
+
+    background: var(--cream);
+
+}
+
+
+.special-card .committee-dot {
+
+    background: var(--gold);
+
+}
+
+
+.committee-card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin: 55px 0 15px;
+
+}
+
+
+.committee-card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 520px;
+
+    color: var(--muted);
+
+}
+
+
+.committee-card small {
+
+    position: absolute;
+
+    left: 42px;
+    bottom: 25px;
+
+    color: var(--cyan);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.green-card small {
+
+    color: var(--green);
+
+}
+
+
+.cream-card small {
+
+    color: var(--cream);
+
+}
+
+
+.special-card small {
+
+    color: var(--gold);
+
+}
 
 
 /* ================= VALUES ================= */
@@ -748,20 +1539,26 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid rgba(101,230,224,.14);
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid rgba(101,230,224,.14);
+
+    background: #061716;
 
 }
 
 
 .value {
 
-    padding: 55px 35px;
+    padding: 58px 35px;
 
-    border-right: 1px solid var(--border);
+    border-right:
+        1px solid rgba(101,230,224,.12);
 
 }
 
@@ -775,9 +1572,32 @@ nav a:hover {
 
 .value span {
 
-    color: var(--gold);
+    color: var(--cyan);
 
     font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.value:nth-child(2) span {
+
+    color: var(--green);
+
+}
+
+
+.value:nth-child(3) span {
+
+    color: var(--gold);
+
+}
+
+
+.value:nth-child(4) span {
+
+    color: var(--cream);
 
 }
 
@@ -786,9 +1606,11 @@ nav a:hover {
 
     margin: 22px 0 5px;
 
-    font-size: 14px;
+    font-family: var(--serif);
 
-    letter-spacing: 2px;
+    font-size: 24px;
+
+    letter-spacing: 1px;
 
 }
 
@@ -802,58 +1624,121 @@ nav a:hover {
 }
 
 
-
 /* ================= LEADERSHIP ================= */
 
 .leadership {
 
-    background: var(--navy2);
+    background:
+
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(114,212,155,.09),
+            transparent 25%
+        ),
+
+        var(--forest-2);
+
+}
+
+
+.leadership .center-heading h2 span {
+
+    color: var(--green);
+
+}
+
+
+.leadership .script-accent {
+
+    color: var(--cyan);
 
 }
 
 
 .leaders {
 
-    max-width: 950px;
+    max-width: 1000px;
 
     margin: auto;
 
     display: grid;
 
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    gap: 25px;
+    gap: 22px;
 
 }
 
 
 .leader {
 
+    position: relative;
+
     padding: 55px 40px;
 
     text-align: center;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid rgba(101,230,224,.14);
 
-    transition: .4s;
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .4s ease;
+
+}
+
+
+.leader::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    opacity: .7;
 
 }
 
 
 .leader:hover {
 
-    transform: translateY(-7px);
+    transform:
+        translateY(-8px);
 
-    border-color: var(--gold);
+    border-color:
+        rgba(101,230,224,.32);
 
 }
 
 
 .leader-symbol {
 
-    color: var(--gold);
+    color: var(--cyan);
 
-    font-size: 58px;
+    font-size: 60px;
+
+}
+
+
+.leader:nth-child(2)
+.leader-symbol {
+
+    color: var(--green);
 
 }
 
@@ -868,18 +1753,20 @@ nav a:hover {
 
     letter-spacing: 3px;
 
-    margin-top: 20px;
+    margin-top: 18px;
 
 }
 
 
 .leader h3 {
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
-    font-size: 43px;
+    font-size: 42px;
 
-    margin: 8px 0 15px;
+    line-height: 1;
+
+    margin: 9px 0 17px;
 
 }
 
@@ -893,20 +1780,31 @@ nav a:hover {
 }
 
 
-
 /* ================= CTA ================= */
 
 .cta {
 
+    position: relative;
+
+    overflow: hidden;
+
     text-align: center;
 
-    padding: 140px 7%;
+    padding:
+        145px 7%;
 
     background:
+
         radial-gradient(
-            circle,
-            rgba(201,164,92,.12),
-            transparent 45%
+            circle at center,
+            rgba(101,230,224,.12),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #071b1a,
+            #0b2926
         );
 
 }
@@ -914,18 +1812,32 @@ nav a:hover {
 
 .cta-symbol {
 
-    color: var(--gold);
+    color: var(--cyan);
 
     font-size: 70px;
 
 }
 
 
+.script-cta {
+
+    font-family: var(--script);
+
+    color: var(--green);
+
+    font-size: 39px;
+
+    margin-bottom: 4px;
+
+}
+
+
 .cta h2 {
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
-    font-size: clamp(50px,7vw,90px);
+    font-size:
+        clamp(52px, 7vw, 95px);
 
     line-height: .9;
 
@@ -934,37 +1846,50 @@ nav a:hover {
 
 .cta h2 span {
 
-    color: var(--gold);
+    color: var(--cyan);
 
     display: block;
 
 }
 
 
-.cta > p:not(.eyebrow) {
-
+.cta > p:not(.script-cta):not(.eyebrow) 
+{
     color: var(--muted);
 
     margin: 25px 0 30px;
-
 }
-
 
 
 /* ================= CONTACT ================= */
 
 .contact {
 
-    background: var(--cream);
+    background:
 
-    color: var(--navy);
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(101,230,224,.12),
+            transparent 25%
+        ),
+
+        var(--cream);
+
+    color: var(--dark-text);
 
 }
 
 
 .contact .eyebrow {
 
-    color: #957331;
+    color: var(--green-dark);
+
+}
+
+
+.contact .section-heading h2 span {
+
+    color: var(--green-dark);
 
 }
 
@@ -973,9 +1898,10 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    gap: 30px;
+    gap: 32px;
 
 }
 
@@ -984,7 +1910,17 @@ nav a:hover {
 
     padding-top: 25px;
 
-    border-top: 1px solid rgba(7,20,33,.2);
+    border-top:
+        1px solid rgba(7,27,26,.20);
+
+    transition: .3s ease;
+
+}
+
+
+.contact-grid > div:hover {
+
+    transform: translateY(-4px);
 
 }
 
@@ -993,9 +1929,9 @@ nav a:hover {
 
     display: block;
 
-    color: #957331;
+    color: #438b75;
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 3px;
 
@@ -1008,10 +1944,11 @@ nav a:hover {
 
     display: block;
 
-    font-size: 16px;
+    font-family: var(--serif);
+
+    font-size: 20px;
 
 }
-
 
 
 /* ================= FOOTER ================= */
@@ -1020,20 +1957,20 @@ footer {
 
     text-align: center;
 
-    padding: 55px 8%;
+    padding: 60px 8%;
 
-    background: #040b13;
+    background: #04100f;
 
 }
 
 
 .footer-logo {
 
-    color: var(--gold);
+    color: var(--cyan);
 
-    font-family: "Cormorant Garamond",serif;
+    font-family: var(--serif);
 
-    font-size: 23px;
+    font-size: 24px;
 
     letter-spacing: 2px;
 
@@ -1042,68 +1979,111 @@ footer {
 
 .footer-logo span {
 
-    font-size: 30px;
+    font-size: 31px;
 
-    margin-right: 10px;
+    margin-right: 8px;
 
 }
 
 
-footer p,
-footer small {
+.footer-script {
+
+    font-family: var(--script);
+
+    color: var(--green);
+
+    font-size: 28px;
+
+    margin-top: 4px;
+
+}
+
+
+footer p:not(.footer-script) {
 
     color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+footer small {
+
+    color: #71857f;
 
     font-size: 10px;
 
 }
 
 
-footer p {
-
-    margin-top: 10px;
-
-}
-
-
 .footer-line {
 
-    width: min(500px,80%);
+    width:
+        min(500px, 80%);
 
     height: 1px;
 
     margin: 30px auto;
 
-    background: var(--border);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(101,230,224,.35),
+            transparent
+        );
 
 }
 
 
+/* ================= SCROLL REVEAL ================= */
 
-/* ================= ANIMATION ================= */
+.reveal {
 
-@keyframes floating {
+    opacity: 0;
 
-    0%,100% {
-
-        transform: translateY(0);
-
-    }
-
-    50% {
-
-        transform: translateY(-10px);
-
-    }
+    transform:
+        translateY(25px);
 
 }
 
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* ================= NAVBAR SCROLL ================= */
+
+.navbar.scrolled {
+
+    background:
+        rgba(5, 22, 21, .97);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.18);
+
+}
+
+
+nav a.active {
+
+    color: var(--cyan);
+
+}
 
 
 /* ================= MOBILE ================= */
 
-@media(max-width:800px) {
-
+@media(max-width: 900px) {
 
     .navbar {
 
@@ -1130,9 +2110,11 @@ footer p {
 
         gap: 20px;
 
-        background: var(--navy);
+        background:
+            rgba(7,27,26,.98);
 
-        border-bottom: 1px solid var(--border);
+        border-bottom:
+            1px solid rgba(101,230,224,.16);
 
     }
 
@@ -1151,26 +2133,35 @@ footer p {
     }
 
 
-    .brand-text strong {
-
-        font-size: 16px;
-
-    }
-
-
     .hero h1 {
 
-        font-size: clamp(58px,16vw,95px);
+        font-size:
+            clamp(58px, 15vw, 95px);
 
     }
 
 
     .about-grid,
     .committee-grid,
-    .leaders,
-    .contact-grid {
+    .leaders {
 
         grid-template-columns: 1fr;
+
+    }
+
+
+    .conference-info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .contact-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
 
     }
 
@@ -1181,14 +2172,20 @@ footer p {
 
         align-items: flex-start;
 
-        padding: 30px;
+    }
+
+
+    .conference-action {
+
+        align-items: flex-start;
 
     }
 
 
     .values {
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            repeat(2, 1fr);
 
     }
 
@@ -1200,24 +2197,160 @@ footer p {
     }
 
 
-    .value {
-
-        border-bottom: 1px solid var(--border);
-
-    }
-
-
     .section {
 
-        padding: 85px 7%;
+        padding:
+            90px 7%;
 
     }
-
 
 }
 
 
-@media(max-width:500px) {
+/* ================= SMALL PHONES ================= */
+
+@media(max-width: 560px) {
+
+    .navbar {
+
+        padding: 0 5%;
+
+    }
+
+
+    .brand-text strong {
+
+        font-size: 16px;
+
+    }
+
+
+    .hero {
+
+        padding:
+            110px 6% 75px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(54px, 17vw, 82px);
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .script-kicker {
+
+        font-size: 29px;
+
+    }
+
+
+    .hero-description {
+
+        font-size: 14px;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+
+    }
+
+
+    .button {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+
+    .hero-details {
+
+        gap: 13px;
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .hero-detail strong {
+
+        font-size: 14px;
+
+    }
+
+
+    .detail-divider {
+
+        height: 23px;
+
+    }
+
+
+    .section-heading h2,
+    .center-heading h2 {
+
+        font-size:
+            clamp(43px, 14vw, 67px);
+
+    }
+
+
+    .conference-card {
+
+        padding: 32px 25px;
+
+    }
+
+
+    .conference-date > span {
+
+        font-size: 62px;
+
+    }
+
+
+    .conference-info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .committee-card {
+
+        min-height: 300px;
+
+        padding: 32px;
+
+    }
+
+
+    .committee-card h3 {
+
+        font-size: 50px;
+
+        margin-top: 48px;
+
+    }
+
+
+    .committee-card small {
+
+        left: 32px;
+
+    }
 
 
     .values {
@@ -1231,39 +2364,112 @@ footer p {
 
         border-right: 0;
 
-    }
-
-
-    .hero-buttons {
-
-        width: 100%;
-
-        flex-direction: column;
+        border-bottom:
+            1px solid rgba(101,230,224,.12);
 
     }
 
 
-    .button {
+    .contact-grid {
 
-        width: 100%;
-
-    }
-
-
-    .committee-card {
-
-        padding: 30px;
-
-        min-height: 270px;
+        grid-template-columns: 1fr;
 
     }
 
 
-    .committee-card small {
+    .leader h3 {
 
-        left: 30px;
+        font-size: 36px;
 
     }
 
 
-  }
+    .cta {
+
+        padding:
+            105px 7%;
+
+    }
+
+
+    .script-cta {
+
+        font-size: 32px;
+
+    }
+
+
+    .footer-logo {
+
+        font-size: 20px;
+
+    }
+
+}
+
+
+/* ================= EXTRA POLISH ================= */
+
+::selection {
+
+    background: var(--cyan);
+
+    color: var(--forest);
+
+}
+
+
+body.loaded .hero-content {
+
+    animation:
+        heroEntrance 1s ease both;
+
+}
+
+
+@keyframes heroEntrance {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* Prevent horizontal overflow */
+
+html,
+body {
+
+    max-width: 100%;
+
+    overflow-x: hidden;
+
+}
+
+
+/* Better focus accessibility */
+
+a:focus-visible,
+button:focus-visible {
+
+    outline:
+        2px solid var(--cyan);
+
+    outline-offset: 4px;
+
+        }
