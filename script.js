@@ -1,3 +1,11 @@
+/* =========================================================
+   THE CHANAKYA COUNCIL
+   Interactive JavaScript
+   ========================================================= */
+
+
+/* ================= MOBILE MENU ================= */
+
 function toggleMenu() {
 
     const navigation =
@@ -8,7 +16,7 @@ function toggleMenu() {
 }
 
 
-/* Close mobile menu after clicking a link */
+/* Close mobile menu after clicking */
 
 document
     .querySelectorAll("#navigation a")
@@ -25,12 +33,20 @@ document
     });
 
 
-/* Scroll reveal animation */
 
-const elements =
+/* ================= SCROLL REVEAL ================= */
+
+const revealElements =
     document.querySelectorAll(
-        ".committee-card, .leader, .value, .philosophy-card"
+        ".committee-card, .leader, .value, .philosophy-card, .conference-card, .info-box, .contact-grid > div"
     );
+
+
+revealElements.forEach(element => {
+
+    element.classList.add("reveal");
+
+});
 
 
 const observer =
@@ -42,10 +58,11 @@ const observer =
 
                 if (entry.isIntersecting) {
 
-                    entry.target.style.opacity = "1";
+                    entry.target.classList.add("visible");
 
-                    entry.target.style.transform =
-                        "translateY(0)";
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 }
 
@@ -60,16 +77,118 @@ const observer =
     );
 
 
-elements.forEach(element => {
-
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity .7s ease, transform .7s ease";
+revealElements.forEach(element => {
 
     observer.observe(element);
+
+});
+
+
+
+/* ================= NAVBAR EFFECT ================= */
+
+const navbar =
+    document.querySelector(".navbar");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 40) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+
+/* ================= ACTIVE NAV LINK ================= */
+
+const sections =
+    document.querySelectorAll("main section[id]");
+
+const navLinks =
+    document.querySelectorAll(
+        "#navigation a"
+    );
+
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 160;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY <
+            sectionTop + sectionHeight
+        ) {
+
+            current =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+
+/* ================= SMOOTH BUTTON FEEDBACK ================= */
+
+document
+    .querySelectorAll(".button")
+    .forEach(button => {
+
+        button.addEventListener(
+            "mouseenter",
+            () => {
+
+                button.style.transition =
+                    "all .25s ease";
+
+            }
+        );
+
+    });
+
+
+
+/* ================= PAGE LOAD ================= */
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add(
+        "loaded"
+    );
 
 });
